@@ -2,7 +2,7 @@
   <div>
     <h1>このサイトについて</h1>
     <h2>作者について</h2>
-    <div>Github: nanananakam(<a href="https://github.com/nanananakam">https://github.com/nanananakam</a>)</div>
+    <div>GitHub: nanananakam(<a href="https://github.com/nanananakam">https://github.com/nanananakam</a>)</div>
     <div>本業はサーバーサイドエンジニアをやってます。</div>
     <h2>プライバシーポリシー</h2>
     <h3>個人情報の利用について</h3>

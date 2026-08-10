@@ -69,7 +69,7 @@ export default Vue.extend({
   },
   data(): PageData {
     let textEncoder = null
-    if ("TextEncoder" in global) {
+    if (typeof TextEncoder !== "undefined") {
       textEncoder = new TextEncoder()
     }
     let segmenter = null

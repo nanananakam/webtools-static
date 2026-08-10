@@ -27,7 +27,7 @@ interface PageData {
 }
 
 export default Vue.extend({
-  name: "base64",
+  name: "fileBase64",
   head: {
     title: "ファイルBase64エンコードツール",
     meta: [

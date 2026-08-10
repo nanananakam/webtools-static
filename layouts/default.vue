@@ -2,23 +2,14 @@
   <v-app>
     <v-main>
       <v-container>
-        <div class="text-right">
-          <a href="https://b.hatena.ne.jp/entry/" class="hatena-bookmark-button"
-             data-hatena-bookmark-layout="basic-label" data-hatena-bookmark-lang="ja"
-             title="このエントリーをはてなブックマークに追加"><img
-            src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加"
-            width="20" height="20" style="border: none;"/></a>
-          <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8"
-                  async="async"></script>
-        </div>
-        <div class="share_buttons text-right">　
+        <div class="share_buttons text-right">
           <ShareNetwork
             network="twitter"
             :url="url"
             :title="title"
             :description="title"
           >
-          <v-icon large>{{ mdiTwitter }}</v-icon>
+          <v-icon large :aria-label="'Twitterで共有: ' + title">{{ mdiTwitter }}</v-icon>
           </ShareNetwork>
           <ShareNetwork
             network="facebook"
@@ -26,15 +17,15 @@
             :title="title"
             :description="title"
           >
-            <v-icon large>{{ mdiFacebook }}</v-icon>
+            <v-icon large :aria-label="'Facebookで共有: ' + title">{{ mdiFacebook }}</v-icon>
           </ShareNetwork>
-          <button v-if="isNavigatorShareButton" @click="navigatorShare">
+          <button v-if="isNavigatorShareButton" @click="navigatorShare" aria-label="このページを共有">
             <v-icon large>{{ mdiShare }}</v-icon>
           </button>
         </div>
         <Nuxt/>
         <v-row>
-          <v-col v-for="item in items" cols="12" md="6" lg="4" xl="3">
+          <v-col v-for="item in items" :key="item.to" cols="12" md="6" lg="4" xl="3">
             <v-card>
               <v-card-title><a :href="item.to">
                 <v-icon>{{ item.icon }}</v-icon>

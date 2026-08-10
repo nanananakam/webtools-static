@@ -67,7 +67,7 @@ export default {
 
   "google-gtag": {
     id: "G-BKHJMCZ8H1",
-    debug: true
+    debug: process.env.NODE_ENV !== "production"
   },
 
   sitemap: {
@@ -75,7 +75,7 @@ export default {
     hostname: 'https://webtools.nanananakam.com',
     filter ({ routes }) {
       return routes.map(route => {
-        route.url = `${route.url}/`
+        route.url = route.url.endsWith('/') ? route.url : `${route.url}/`
         return route
       })
     }

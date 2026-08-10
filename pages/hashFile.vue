@@ -46,7 +46,6 @@ import Vue from "vue";
 import CryptoJS from "crypto-js"
 import {DataTableHeader} from "vuetify";
 import ValueToClipboard from "../components/valueToClipboard.vue";
-import * as constants from "constants";
 
 interface commonDataTableItem {
   key: string,

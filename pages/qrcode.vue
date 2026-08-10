@@ -16,7 +16,7 @@
     </v-radio-group>
     <v-btn type="submit" v-on:click="createQr">生成</v-btn>
     <br>
-    <img v-if="resultDataUrl" :src="resultDataUrl">
+    <img v-if="resultDataUrl" :src="resultDataUrl" :alt="'QRコード: ' + inputString">
     <br>
     <a v-if="resultDataUrl" :href="resultDataUrl" download>ダウンロード</a>
   </div>

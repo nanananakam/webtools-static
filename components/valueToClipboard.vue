@@ -36,12 +36,18 @@ export default Vue.extend({
   },
   methods: {
     copyText: function () {
-      navigator.clipboard.writeText(this.text);
-      this.copied = true;
+      if (!navigator.clipboard) {
+        return;
+      }
       const self = this;
-      setTimeout(function () {
-        self.copied = false;
-      }, 2000);
+      navigator.clipboard.writeText(this.text).then(function () {
+        self.copied = true;
+        setTimeout(function () {
+          self.copied = false;
+        }, 2000);
+      }).catch(function () {
+        // クリップボードへの書き込みが拒否された場合は状態を変えない
+      });
     }
   }
 })

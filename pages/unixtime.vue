@@ -538,7 +538,8 @@ Sun, 06 Nov 1994 08:49:37 GMT`
       ]
     },
     resultOtherDataTableItems(): ResultOtherDataTableItem[] {
-      const inputFormatString = this.parseModeList.find((parseMode) => (parseMode.mode === this.formatType))!.modeString
+      const inputFormat = this.parseModeList.find((parseMode) => (parseMode.mode === this.formatType))
+      const inputFormatString = inputFormat == null ? "-" : inputFormat.modeString
       return [
         {
           "key": "現在時刻との差",
