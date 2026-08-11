@@ -1,0 +1,59 @@
+<template>
+  <div>
+    <h1>このサイトについて</h1>
+    <h2>作者について</h2>
+    <div>
+      GitHub: nanananakam(<a href="https://github.com/nanananakam"
+        >https://github.com/nanananakam</a
+      >)
+    </div>
+    <div>本業はサーバーサイドエンジニアをやってます。</div>
+    <h2>プライバシーポリシー</h2>
+    <h3>個人情報の利用について</h3>
+    <div>
+      当サイトでは、アクセス元IPアドレス、ブラウザから送信されたヘッダー情報、フォームに入力された情報を含むアクセスログを記録している場合がございます。これらの情報は法に定める場合を除き、サイトの改善の目的のみに利用いたします。
+    </div>
+    <h3>アクセス解析ツールについて</h3>
+    <div>
+      当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス」を利用しています。このGoogleアナリティクスはトラフィックデータの収集のためにクッキー（Cookie）を使用しております。トラフィックデータは匿名で収集されており、個人を特定するものではありません。
+    </div>
+    <div>
+      また当サイトではCloudflareによるアクセス解析ツール「Cloudflare Web
+      Analytics」を合わせて利用していますが、Cloudflare Web
+      Analyticsはプライバシーを重視した解析ツールとなっておりCookie等の収集は行っておりません。詳細は「<a
+        href="https://www.cloudflare.com/ja-jp/web-analytics/"
+        >Cloudflare Web Analytics</a
+      >」をご確認ください。
+    </div>
+    <h2>免責事項</h2>
+    <div>
+      当サイトからのリンクやバナーなどで移動したサイトで提供される情報、サービス等について一切の責任を負いません。
+    </div>
+    <div>
+      また当サイトのコンテンツ・情報について、できる限り正確な情報を提供するように努めておりますが、正確性や安全性を保証するものではありません。
+    </div>
+    <div>
+      当サイトに掲載された内容によって生じた損害等の一切の責任を負いかねますのでご了承ください。
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+const description = 'Web開発・運用であるとうれしいちょっとしたツール集です。'
+
+useSeoMeta({
+  title: 'このサイトについて',
+  description,
+  ogSiteName: 'nanananakam webtools',
+  ogType: 'website',
+  ogTitle: 'nanananakam webtools',
+  ogDescription: description,
+  // このページに直接飛んでくるのはあまり望まないのでトップに飛ばす
+  ogUrl: 'https://webtools.nanananakam.com/',
+  twitterCard: 'summary',
+})
+
+useHead({
+  link: [{ rel: 'canonical', href: 'https://webtools.nanananakam.com/about/' }],
+})
+</script>

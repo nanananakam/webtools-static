@@ -91,3 +91,7 @@ sw.*
 
 # Cloudflare Wrangler
 .wrangler
+
+# Nuxt build output
+.output
+.data

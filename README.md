@@ -22,15 +22,14 @@ on Cloudflare Pages
 
 ## 構成上のポイント
 
-- Nuxt 2 の `target: 'static'` 構成で、`nuxt generate` により全ページを事前生成します。
+- Nuxt 4 (Vue 3 / Vite) + Vuetify 4 構成で、`nuxt generate` により全ページを事前生成します。
 - 生成物の出力先は `dist/` です。SPAフォールバックとして `404.html` を生成します。
 - 入力データはすべてブラウザ内で処理し、サーバーへ送信しません。
 - 広告は掲載していません。
 
 ## Build Setup
 
-Node.js 18 系を利用してください(`.nvmrc` 参照)。Nuxt 2 は webpack 4 を利用するため、
-Node.js 17 以降では `NODE_OPTIONS=--openssl-legacy-provider` が必要です(npm scripts 内で指定済み)。
+Node.js 24 系 (最新のLTS) を利用してください(`.nvmrc` 参照)。
 
 ```bash
 # install dependencies
@@ -44,32 +43,38 @@ $ yarn generate
 
 # serve the generated site locally
 $ yarn start
+
+# lint (eslint + prettier) と型チェック
+$ yarn lint
+$ yarn typecheck
 ```
 
 ## Cloudflare Pages の設定
 
 GitHub連携でこのリポジトリを接続し、以下を設定します。
 
-| 項目 | 値 |
-| --- | --- |
-| Framework preset | None (Nuxt.js は Nuxt 3 前提のため使わない) |
-| Build command | `yarn generate` |
-| Build output directory | `dist` |
-| Node.js version | 18 (`.nvmrc` で指定済み) |
+| 項目                   | 値                       |
+| ---------------------- | ------------------------ |
+| Framework preset       | None                     |
+| Build command          | `yarn generate`          |
+| Build output directory | `dist`                   |
+| Node.js version        | 24 (`.nvmrc` で指定済み) |
 
 Custom domain には `webtools.nanananakam.com` を設定してください。
 
 `wrangler.toml` を同梱しているため、`npx wrangler pages deploy` でのデプロイも可能です。
 
-キャッシュ・セキュリティヘッダーは `static/_headers` (生成後は `dist/_headers`) で設定しています。
+キャッシュ・セキュリティヘッダーは `public/_headers` (生成後は `dist/_headers`) で設定しています。
 
 ## Special Directories
 
-Nuxt 2 の標準的なディレクトリ構成に従います。
+Nuxt 4 の標準的なディレクトリ構成 (アプリケーションコードは `app/` 配下) に従います。
 
-- `assets` … コンパイル前のアセット (Sass変数など)
-- `components` … 再利用するVueコンポーネント
-- `layouts` … 全ページ共通のレイアウト
-- `pages` … 各ページ。ファイル構成がそのままルーティングになります
-- `static` … そのまま `/` 直下に配置される静的ファイル (`robots.txt`, `_headers` など)
-- `store` … Vuex ストア (未使用)
+- `app/components` … 再利用するVueコンポーネント
+- `app/layouts` … 全ページ共通のレイアウト
+- `app/pages` … 各ページ。ファイル構成がそのままルーティングになります
+- `app/plugins` … Vuetify の初期化など、アプリ起動時に実行するプラグイン
+- `app/types` … 複数のページで共有する型定義
+- `app/app.vue` … アプリケーションのルートコンポーネント
+- `app/error.vue` … エラーページ
+- `public` … そのまま `/` 直下に配置される静的ファイル (`robots.txt`, `_headers` など)
