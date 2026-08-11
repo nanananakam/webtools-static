@@ -32,7 +32,17 @@ export default defineNuxtConfig({
         },
         { name: 'format-detection', content: 'telephone=no' },
       ],
-      // link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+      link: [
+        // ブラウザが既定で要求する /favicon.ico を用意し、404 を発生させない。
+        {
+          rel: 'icon',
+          type: 'image/x-icon',
+          href: '/favicon.ico',
+          sizes: 'any',
+        },
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+      ],
     },
   },
 
@@ -59,6 +69,13 @@ export default defineNuxtConfig({
 
   build: {
     transpile: ['vuetify'],
+  },
+
+  experimental: {
+    // 各ページは非同期データを持たないため _payload.json は中身が空になる。
+    // 生成しておくと Nuxt が <link rel="prefetch"> を出力する一方で実際には
+    // 使われず、ブラウザに「先読みしたリソースが使われていない」と警告される。
+    payloadExtraction: false,
   },
 
   vite: {
